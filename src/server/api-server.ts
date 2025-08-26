@@ -59,7 +59,7 @@ export class DLMMAPIServer {
   private readonly boundHandleUncaughtException: (error: Error) => void;
   private readonly boundHandleUnhandledRejection: (
     reason: any,
-    promise: Promise<any>,
+    promise: Promise<any>
   ) => void;
 
   constructor(port: number = 7000) {
@@ -71,7 +71,7 @@ export class DLMMAPIServer {
       this.handleUncaughtException(error).catch((err) => {
         console.error(
           "CRITICAL: API Server handleUncaughtException failed",
-          err,
+          err
         );
         process.exit(1);
       });
@@ -81,7 +81,7 @@ export class DLMMAPIServer {
       this.handleUnhandledRejection(reason, promise).catch((err) => {
         console.error(
           "CRITICAL: API Server handleUnhandledRejection failed",
-          err,
+          err
         );
         process.exit(1);
       });
@@ -140,16 +140,16 @@ export class DLMMAPIServer {
         healthChecker: getService(TYPES.StrategyHealthChecker),
 
         // 池爬虫服务（使用字符串令牌）
-        poolCrawler:
-          require("tsyringe").container.resolve("PoolCrawlerService"),
-        qualifiedPoolsManager: require("tsyringe").container.resolve(
-          "QualifiedPoolsManager",
-        ),
-        tokenFilterManager:
-          require("tsyringe").container.resolve("TokenFilterManager"),
-        poolPushStorageManager: require("tsyringe").container.resolve(
-          "PoolPushStorageManager",
-        ),
+        // poolCrawler:
+        //   require("tsyringe").container.resolve("PoolCrawlerService"),
+        // qualifiedPoolsManager: require("tsyringe").container.resolve(
+        //   "QualifiedPoolsManager"
+        // ),
+        // tokenFilterManager:
+        //   require("tsyringe").container.resolve("TokenFilterManager"),
+        // poolPushStorageManager: require("tsyringe").container.resolve(
+        //   "PoolPushStorageManager"
+        // ),
       };
 
       // 立即设置logger引用，以便后续使用
@@ -179,13 +179,13 @@ export class DLMMAPIServer {
             await service.initialize(defaultConfig);
             await this.logger.logBusinessOperation(
               `✅ ${serviceName} 服务初始化完成`,
-              { serviceName },
+              { serviceName }
             );
           } catch (error) {
             await this.logger.logError(
               "ServiceInit",
               `⚠️ ${serviceName} 服务初始化失败`,
-              error as Error,
+              error as Error
             );
           }
         }
@@ -203,13 +203,13 @@ export class DLMMAPIServer {
             await service.start();
             await this.logger.logBusinessOperation(
               `🚀 ${serviceName} 服务启动完成`,
-              { serviceName },
+              { serviceName }
             );
           } catch (error) {
             await this.logger.logError(
               "ServiceStart",
               `⚠️ ${serviceName} 服务启动失败`,
-              error as Error,
+              error as Error
             );
           }
         }
@@ -217,7 +217,7 @@ export class DLMMAPIServer {
 
       await this.logger.logSystem(
         "INFO",
-        "✅ 所有服务初始化完成 (真实服务模式)",
+        "✅ 所有服务初始化完成 (真实服务模式)"
       );
 
       // 初始化策略管理器
@@ -229,7 +229,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "Server",
           "❌ 服务初始化失败",
-          error as Error,
+          error as Error
         );
       } else {
         console.error("❌ 服务初始化失败(logger未初始化):", error);
@@ -253,7 +253,7 @@ export class DLMMAPIServer {
         await strategyRegistry.register("simple-y", simpleYExecutor);
         await this.logger.logSystem(
           "INFO",
-          "✅ SimpleYExecutor注册成功 (类型: simple-y)",
+          "✅ SimpleYExecutor注册成功 (类型: simple-y)"
         );
       }
 
@@ -262,11 +262,11 @@ export class DLMMAPIServer {
       if (strategyRegistry && chainPositionExecutor) {
         await strategyRegistry.register(
           "chain_position",
-          chainPositionExecutor,
+          chainPositionExecutor
         );
         await this.logger.logSystem(
           "INFO",
-          "✅ ChainPositionExecutor注册成功 (类型: chain_position)",
+          "✅ ChainPositionExecutor注册成功 (类型: chain_position)"
         );
       }
 
@@ -297,7 +297,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "Server",
           "❌ 策略管理器初始化失败",
-          error as Error,
+          error as Error
         );
       } else {
         console.error("❌ 策略管理器初始化失败(logger未初始化):", error);
@@ -328,7 +328,7 @@ export class DLMMAPIServer {
             "media-src": ["'self'"],
           },
         },
-      }),
+      })
     );
     this.app.use(
       cors({
@@ -341,7 +341,7 @@ export class DLMMAPIServer {
           "X-Requested-With",
           "X-Request-ID",
         ],
-      }),
+      })
     );
 
     this.app.use(express.json({ limit: "10mb" }));
@@ -377,7 +377,7 @@ export class DLMMAPIServer {
     await this.logger.logSystem("INFO", `📁 静态文件目录: ${staticPath}`);
     await this.logger.logSystem(
       "INFO",
-      `📁 目录存在: ${fs.existsSync(staticPath)}`,
+      `📁 目录存在: ${fs.existsSync(staticPath)}`
     );
 
     // 验证关键文件
@@ -385,11 +385,11 @@ export class DLMMAPIServer {
     const configPath = path.join(staticPath, "js/config.js");
     await this.logger.logSystem(
       "INFO",
-      `📄 index.html存在: ${fs.existsSync(indexPath)}`,
+      `📄 index.html存在: ${fs.existsSync(indexPath)}`
     );
     await this.logger.logSystem(
       "INFO",
-      `📄 config.js存在: ${fs.existsSync(configPath)}`,
+      `📄 config.js存在: ${fs.existsSync(configPath)}`
     );
 
     const limiter = rateLimit({
@@ -653,7 +653,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "API",
           "获取业务操作日志失败",
-          error as Error,
+          error as Error
         );
         res.status(500).json({
           success: false,
@@ -680,7 +680,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "API",
           "获取业务监控日志失败",
-          error as Error,
+          error as Error
         );
         res.status(500).json({
           success: false,
@@ -709,7 +709,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "API",
           `获取类别日志失败: ${req.params.category}`,
-          error as Error,
+          error as Error
         );
         res.status(500).json({
           success: false,
@@ -733,7 +733,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "API",
           "获取日志文件列表失败",
-          error as Error,
+          error as Error
         );
         res.status(500).json({
           success: false,
@@ -829,7 +829,7 @@ export class DLMMAPIServer {
               logsBasePath,
               dir,
               "operations",
-              `strategy-${instanceId}.log`,
+              `strategy-${instanceId}.log`
             );
 
             // 根据实例ID前缀确定策略类型
@@ -870,7 +870,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "API",
           "获取策略实例列表失败",
-          error as Error,
+          error as Error
         );
         res.status(500).json({
           success: false,
@@ -902,7 +902,7 @@ export class DLMMAPIServer {
             "../../logs/strategies",
             `instance-${instanceId}`,
             "operations",
-            `strategy-${instanceId}.log`,
+            `strategy-${instanceId}.log`
           );
         }
 
@@ -942,7 +942,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "API",
           `获取实例日志失败 [${req.params.instanceId}]`,
-          error as Error,
+          error as Error
         );
         res.status(500).json({
           success: false,
@@ -971,7 +971,7 @@ export class DLMMAPIServer {
                 };
                 return acc;
               },
-              {} as any,
+              {} as any
             ),
           },
           timestamp: new Date().toISOString(),
@@ -1015,7 +1015,7 @@ export class DLMMAPIServer {
               files: beforeStats.totalFiles - afterStats.totalFiles,
               size: beforeStats.totalSize - afterStats.totalSize,
               sizeFormatted: this.formatBytes(
-                beforeStats.totalSize - afterStats.totalSize,
+                beforeStats.totalSize - afterStats.totalSize
               ),
             },
           },
@@ -1090,7 +1090,7 @@ export class DLMMAPIServer {
         ];
 
         const shouldIgnore = ignoredPaths.some((ignoredPath) =>
-          req.path.startsWith(ignoredPath),
+          req.path.startsWith(ignoredPath)
         );
 
         if (shouldIgnore) {
@@ -1122,7 +1122,7 @@ export class DLMMAPIServer {
           path.join(process.cwd(), "web/public/index.html"),
           path.join(
             process.cwd(),
-            "dlmm-liquidity-manager/web/public/index.html",
+            "dlmm-liquidity-manager/web/public/index.html"
           ),
         ];
 
@@ -1190,7 +1190,7 @@ export class DLMMAPIServer {
           if (logger && typeof logger.logSystem === "function") {
             await logger.logSystem(
               "ERROR",
-              `JSON解析错误: ${error.message} | URL: ${req.originalUrl} | Method: ${req.method} | Content-Type: ${req.get("Content-Type")}`,
+              `JSON解析错误: ${error.message} | URL: ${req.originalUrl} | Method: ${req.method} | Content-Type: ${req.get("Content-Type")}`
             );
           } else {
             console.error("[SERVER] JSON解析错误:", {
@@ -1230,11 +1230,11 @@ export class DLMMAPIServer {
     // Uncaught exception and unhandled rejection handlers
     process.removeListener(
       "uncaughtException",
-      this.boundHandleUncaughtException,
+      this.boundHandleUncaughtException
     );
     process.removeListener(
       "unhandledRejection",
-      this.boundHandleUnhandledRejection,
+      this.boundHandleUnhandledRejection
     );
 
     process.on("uncaughtException", this.boundHandleUncaughtException);
@@ -1373,11 +1373,11 @@ export class DLMMAPIServer {
       // 🔥 初始化Socket.IO服务
       this.socketIOService = new SocketIOService(
         this.server,
-        this.services.eventBus,
+        this.services.eventBus
       );
       await this.logger.logSystem(
         "INFO",
-        "🔌 Socket.IO服务已初始化（已清理旧实例）",
+        "🔌 Socket.IO服务已初始化（已清理旧实例）"
       );
 
       // 启动服务器（同时支持API和Socket.IO）
@@ -1387,19 +1387,19 @@ export class DLMMAPIServer {
 
         await this.logger.logSystem(
           "INFO",
-          `🎉 DLMM服务器启动成功在端口 ${this.port}`,
+          `🎉 DLMM服务器启动成功在端口 ${this.port}`
         );
         await this.logger.logSystem(
           "INFO",
-          `📡 API服务器: ${protocol}://localhost:${this.port}`,
+          `📡 API服务器: ${protocol}://localhost:${this.port}`
         );
         await this.logger.logSystem(
           "INFO",
-          `🔌 Socket.IO服务器: ${protocol}://localhost:${this.port}/socket.io/`,
+          `🔌 Socket.IO服务器: ${protocol}://localhost:${this.port}/socket.io/`
         );
         await this.logger.logSystem(
           "INFO",
-          `🔌 WebSocket协议: ${wsProtocol}://localhost:${this.port}`,
+          `🔌 WebSocket协议: ${wsProtocol}://localhost:${this.port}`
         );
       });
     } catch (error) {
@@ -1407,7 +1407,7 @@ export class DLMMAPIServer {
         await this.logger.logError(
           "Server",
           "❌ 服务器启动失败:",
-          error as Error,
+          error as Error
         );
       } else {
         console.error("❌ 服务器启动失败(无Logger):", error);
@@ -1458,7 +1458,7 @@ export class DLMMAPIServer {
       await this.logger.logError(
         "Server",
         "❌ 关闭过程中发生错误:",
-        error as Error,
+        error as Error
       );
       process.exit(1);
     }
@@ -1486,20 +1486,20 @@ export class DLMMAPIServer {
    */
   private async handleUnhandledRejection(
     reason: any,
-    promise: Promise<any>,
+    promise: Promise<any>
   ): Promise<void> {
     try {
       if (this.logger && typeof this.logger.logError === "function") {
         await this.logger.logError(
           "Server",
           "❌ 未处理的Promise拒绝:",
-          new Error(String(reason)),
+          new Error(String(reason))
         );
         await this.logger.logSystem("WARN", `Promise: ${String(promise)}`);
       } else {
         console.error(
           "[SERVER] ❌ 未处理的Promise拒绝 (logger不可用):",
-          reason,
+          reason
         );
         console.warn("[SERVER] Promise:", String(promise));
       }

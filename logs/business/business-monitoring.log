@@ -1,2 +1,4 @@
-08/26 19:03:15 INFO [business-monitoring] MONITORING: solana-connection-init | {"endpoint":"https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62","commitment":"confirmed","duration":1,"wsEnabled":true}
-08/26 19:03:15 INFO [business-monitoring] MONITORING: solana-connection-init | {"endpoint":"https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62","commitment":"confirmed","duration":0,"wsEnabled":true}
+08/26 19:18:30 INFO [business-monitoring] MONITORING: solana-connection-init | {"endpoint":"https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62","commitment":"confirmed","duration":1,"wsEnabled":true}
+08/26 19:18:30 INFO [business-monitoring] MONITORING: solana-connection-init | {"endpoint":"https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62","commitment":"confirmed","duration":0,"wsEnabled":true}
+08/26 19:18:30 INFO [business-monitoring] MONITORING: wallet-service-init | {"walletPath":"/Users/jinzexu/workspace_codes/jack-crypto/meteora2/data/wallet.enc","initDuration":0}
+08/26 19:18:30 INFO [business-monitoring] MONITORING: solana-connection-init | {"endpoint":"https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62","commitment":"confirmed","duration":0,"wsEnabled":true}

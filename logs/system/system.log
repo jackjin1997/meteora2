@@ -1,11 +1,90 @@
-08/26 19:03:15 INFO [system] 🚀 日志系统已启动，所有旧日志已清理
-08/26 19:03:15 INFO [system] 策略实例创建: APP
-08/26 19:03:15 INFO [system] 🔧 [APP] 开始分阶段初始化系统服务...
-08/26 19:03:15 INFO [system] 🔧 [阶段1] 初始化核心基础设施...
-08/26 19:03:15 INFO [system] ⚙️ [阶段1] 加载配置文件...
-08/26 19:03:15 INFO [system] ✅ [阶段1] 核心基础设施初始化完成
-08/26 19:03:15 INFO [system] 🔧 [阶段2] 初始化区块链服务...
-08/26 19:03:15 INFO [system] Solana连接初始化完成: https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62
-08/26 19:03:15 INFO [system] Solana连接初始化完成: https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62
-08/26 19:03:15 INFO [system] ✅ [阶段2] 区块链服务初始化完成
-08/26 19:03:15 INFO [system] 🔧 [阶段3] 初始化外部服务...
+08/26 19:18:30 INFO [system] 🚀 日志系统已启动，所有旧日志已清理
+08/26 19:18:30 INFO [system] 策略实例创建: APP
+08/26 19:18:30 INFO [system] 🔧 [APP] 开始分阶段初始化系统服务...
+08/26 19:18:30 INFO [system] 🔧 [阶段1] 初始化核心基础设施...
+08/26 19:18:30 INFO [system] ⚙️ [阶段1] 加载配置文件...
+08/26 19:18:30 INFO [system] ✅ [阶段1] 核心基础设施初始化完成
+08/26 19:18:30 INFO [system] 🔧 [阶段2] 初始化区块链服务...
+08/26 19:18:30 INFO [system] Solana连接初始化完成: https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62
+08/26 19:18:30 INFO [system] Solana连接初始化完成: https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62
+08/26 19:18:30 INFO [system] ✅ [阶段2] 区块链服务初始化完成
+08/26 19:18:30 INFO [system] 🔧 [阶段3] 初始化外部服务...
+08/26 19:18:30 INFO [system] JupiterService开始初始化...
+08/26 19:18:30 INFO [system] 🚀 强制使用Jupiter Ultra API (lite-api.jup.ag/ultra/v1) - V6功能已注释
+08/26 19:18:30 INFO [system] Jupiter API连接验证跳过 (惰性加载)
+08/26 19:18:30 INFO [system] JupiterService初始化完成 v2.0.0 - API: https://quote-api.jup.ag/v6
+08/26 19:18:30 INFO [system] ✅ [阶段3] JupiterService 初始化成功
+08/26 19:18:30 INFO [system] DLMM SDK导入成功
+08/26 19:18:30 INFO [system] MeteoraService初始化完成
+08/26 19:18:30 INFO [system] ✅ [阶段3] MeteoraService 初始化成功
+08/26 19:18:30 INFO [system] HeliusService开始初始化...
+08/26 19:18:30 WARN [system] Helius API密钥未配置，服务将使用受限功能
+08/26 19:18:30 WARN [system] 没有API密钥，跳过连接验证
+08/26 19:18:30 INFO [system] HeliusService初始化完成 v2.0.0, API连接: 未配置
+08/26 19:18:30 INFO [system] ✅ [阶段3] HeliusService 初始化成功
+08/26 19:18:30 INFO [system] ✅ [阶段3] 外部服务初始化完成
+08/26 19:18:30 INFO [system] 🔧 [阶段4] 初始化业务服务...
+08/26 19:18:30 INFO [system] 🔧 [阶段4] 初始化策略管理器...
+08/26 19:18:30 INFO [system] MeteoraService is successfully injected into YPositionManager.
+08/26 19:18:30 INFO [system] [StrategyRegistry] 注册策略执行器: simple-y vv3.0.0-modular
+08/26 19:18:30 INFO [system] ✅ SimpleYExecutor已注册
+08/26 19:18:30 INFO [system] [StrategyRegistry] 注册策略执行器: chain_position vvv2.0.0-event-driven
+08/26 19:18:30 INFO [system] ✅ ChainPositionExecutor已注册
+08/26 19:18:30 INFO [system] [StrategyManager] 初始化策略管理器...
+08/26 19:18:30 INFO [system] [StrategyStorage] 存储初始化完成: /Users/jinzexu/workspace_codes/jack-crypto/meteora2/data/strategies
+08/26 19:18:30 INFO [system] [StrategyStorage] 加载了 5 个策略实例
+08/26 19:18:30 INFO [system] [StrategyScheduler] 事件驱动调度器启动成功 v2.0
+08/26 19:18:30 INFO [system] [StrategyManager] 策略管理器初始化完成，加载 5 个实例
+08/26 19:18:30 INFO [system] ✅ [策略] 策略管理器初始化完成
+08/26 19:18:30 INFO [system] ✅ [阶段4] 业务服务初始化完成
+08/26 19:18:30 INFO [system] 🔧 [APP] 分阶段服务初始化完成
+08/26 19:18:30 INFO [system] 🔧 [APP] DLMM应用程序初始化完成
+08/26 19:18:30 INFO [system] 🚀 [APP] 🎉 DLMM系统启动完成!
+08/26 19:18:30 INFO [system] 🌐 [APP] API服务器将在端口 7000 启动
+08/26 19:18:30 INFO [system] 🔧 正在初始化依赖注入容器...
+08/26 19:18:30 INFO [system] 🔧 正在初始化关键服务...
+08/26 19:18:30 INFO [system] 开始初始化WalletService
+08/26 19:18:30 INFO [system] WalletService初始化完成 (路径: /Users/jinzexu/workspace_codes/jack-crypto/meteora2/data/wallet.enc)
+08/26 19:18:30 INFO [system] Solana连接初始化完成: https://mainnet.helius-rpc.com/?api-key=13d60095-6323-4ef5-bf9a-2a39f0ca7f62
+08/26 19:18:30 INFO [system] MultiRPCService开始初始化...
+08/26 19:18:30 INFO [system] MultiRPCService初始化完成 v2.0.0: 3个端点
+08/26 19:18:30 INFO [system] GasService开始初始化...
+08/26 19:18:30 INFO [system] GasService初始化完成 v2.0.0
+08/26 19:18:30 INFO [system] JupiterService开始初始化...
+08/26 19:18:30 INFO [system] 🚀 强制使用Jupiter Ultra API (lite-api.jup.ag/ultra/v1) - V6功能已注释
+08/26 19:18:30 INFO [system] Jupiter API连接验证跳过 (惰性加载)
+08/26 19:18:30 INFO [system] JupiterService初始化完成 v2.0.0 - API: https://quote-api.jup.ag/v6
+08/26 19:18:30 INFO [system] DLMM SDK导入成功
+08/26 19:18:30 INFO [system] MeteoraService初始化完成
+08/26 19:18:30 INFO [system] HeliusService开始初始化...
+08/26 19:18:30 WARN [system] Helius API密钥未配置，服务将使用受限功能
+08/26 19:18:30 WARN [system] 没有API密钥，跳过连接验证
+08/26 19:18:30 INFO [system] HeliusService初始化完成 v2.0.0, API连接: 未配置
+08/26 19:18:30 INFO [system] ✅ 关键服务初始化完成
+08/26 19:18:31 INFO [system] GasService启动完成 (已禁用定期轮询)
+08/26 19:18:31 INFO [system] ✅ 所有服务初始化完成 (真实服务模式)
+08/26 19:18:31 INFO [system] 🎯 初始化策略管理器...
+08/26 19:18:31 WARN [system] [StrategyRegistry] 策略类型已存在，将覆盖: simple-y
+08/26 19:18:31 INFO [system] [StrategyRegistry] 注册策略执行器: simple-y vv3.0.0-modular
+08/26 19:18:31 INFO [system] ✅ SimpleYExecutor注册成功 (类型: simple-y)
+08/26 19:18:31 WARN [system] [StrategyRegistry] 策略类型已存在，将覆盖: chain_position
+08/26 19:18:31 INFO [system] [StrategyRegistry] 注册策略执行器: chain_position vvv2.0.0-event-driven
+08/26 19:18:31 INFO [system] ✅ ChainPositionExecutor注册成功 (类型: chain_position)
+08/26 19:18:31 WARN [system] [StrategyScheduler] 调度器已在运行
+08/26 19:18:31 INFO [system] ✅ StrategyScheduler启动成功
+08/26 19:18:31 INFO [system] ✅ StrategyManager初始化成功
+08/26 19:18:31 INFO [system] [StrategyHealthChecker] 开始健康检查 - 检查 5 个策略实例
+08/26 19:18:31 INFO [system] [StrategyHealthChecker] 健康检查完成 - 耗时: 2ms, 发现问题: 0 个
+08/26 19:18:31 INFO [system] [StrategyHealthChecker] 健康检查已启动 - 检查间隔: 60秒, 自动修复: 启用
+08/26 19:18:31 INFO [system] ✅ StrategyHealthChecker启动成功
+08/26 19:18:31 INFO [system] 🎯 策略管理器初始化完成
+08/26 19:18:31 INFO [system] 🚀 启动DLMM API服务器...
+08/26 19:18:31 INFO [system] 🔧 配置Express中间件...
+08/26 19:18:31 INFO [system] 📁 静态文件目录: /Users/jinzexu/workspace_codes/jack-crypto/meteora2/web/public
+08/26 19:18:31 INFO [system] 📁 目录存在: true
+08/26 19:18:31 INFO [system] 📄 index.html存在: true
+08/26 19:18:31 INFO [system] 📄 config.js存在: true
+08/26 19:18:31 INFO [system] ✅ Express中间件配置完成
+08/26 19:18:31 INFO [system] 🔧 配置API路由...
+08/26 19:18:31 INFO [system] ✅ API路由配置完成
+08/26 19:18:31 INFO [system] 🔌 Socket.IO服务已初始化（已清理旧实例）
