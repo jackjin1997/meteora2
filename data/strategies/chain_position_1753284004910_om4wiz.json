@@ -55,7 +55,7 @@
       ]
     }
   },
-  "status": "running",
+  "status": "paused",
   "createdAt": "2025-07-23T15:20:04.911Z",
   "startedAt": "2025-07-23T15:55:04.885Z",
   "stoppedAt": "2025-07-23T15:50:17.805Z"

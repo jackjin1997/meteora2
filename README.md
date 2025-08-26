@@ -133,29 +133,34 @@ Solana链没有免费好用的RPC，建议使用以下服务商：
 | 组件 | 版本要求 | 说明 |
 |------|----------|------|
 | **Node.js** | >= 18.0.0 | JavaScript 运行时 |
-| **NPM** | >= 9.0.0 | 包管理器 |
+| **pnpm** | >= 8.0.0 | 包管理器 (性能更优) |
 | **内存** | >= 4GB | 推荐 8GB |
 | **存储** | >= 20GB | SSD 推荐 |
 | **网络** | 稳定的互联网连接 | 需要访问 Solana RPC |
+
+> 💡 **为什么使用pnpm**: pnpm提供更快的安装速度、更严格的依赖管理和更少的磁盘空间占用
 
 ### ⚡ 一键启动
 
 ```bash
 # 1. 克隆项目
-git clone <repository-url>
-cd dlmm-liquidity-manager
+git clone https://github.com/jackjin1997/meteora2.git
+cd meteora2
 
-# 2. 安装依赖
-npm install
+# 2. 安装pnpm (如果还没有安装)
+npm install -g pnpm
 
-# 3. 配置环境变量
+# 3. 安装依赖
+pnpm install
+
+# 4. 配置环境变量
 cp env.example .env
 # 编辑 .env 文件，配置必要参数
 
-# 4. 一键启动系统
+# 5. 一键启动系统
 ./scripts/quick-start.sh
 
-# 5. 验证部署
+# 6. 验证部署
 curl http://localhost:7000/api/health
 curl http://localhost:7001/health
 ```
@@ -596,21 +601,24 @@ docker-compose pull && docker-compose up -d
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# 2. 克隆项目
-git clone <repository-url>
-cd dlmm-liquidity-manager
+# 2. 安装 pnpm
+npm install -g pnpm
 
-# 3. 安装依赖
-npm install --production
+# 3. 克隆项目
+git clone https://github.com/jackjin1997/meteora2.git
+cd meteora2
 
-# 4. 配置环境
+# 4. 安装依赖
+pnpm install --prod
+
+# 5. 配置环境
 cp env.example .env
 # 编辑配置文件
 
-# 5. 构建项目
-npm run build
+# 6. 构建项目
+pnpm run build
 
-# 6. 使用 PM2 管理进程
+# 7. 使用 PM2 管理进程
 npm install -g pm2
 pm2 start ecosystem.config.js
 pm2 save

@@ -51,6 +51,20 @@ check_typescript() {
     fi
 }
 
+# 检查pnpm
+check_pnpm() {
+    echo -e "${BLUE}📋 检查pnpm包管理器...${NC}"
+    
+    if ! command -v pnpm &> /dev/null; then
+        echo -e "${YELLOW}⚠️  pnpm未安装，正在安装...${NC}"
+        npm install -g pnpm
+        echo -e "${GREEN}✅ pnpm安装完成${NC}"
+    else
+        PNPM_VERSION=$(pnpm -v)
+        echo -e "${GREEN}✅ pnpm版本检查通过: $PNPM_VERSION${NC}"
+    fi
+}
+
 # 安装依赖
 install_dependencies() {
     echo -e "${BLUE}📦 安装项目依赖...${NC}"
@@ -59,10 +73,10 @@ install_dependencies() {
         echo -e "${GREEN}使用pnpm安装依赖...${NC}"
         pnpm install
     elif command -v yarn &> /dev/null; then
-        echo -e "${GREEN}使用yarn安装依赖...${NC}"
+        echo -e "${YELLOW}⚠️  建议使用pnpm获得更好性能，使用yarn安装依赖...${NC}"
         yarn install
     else
-        echo -e "${GREEN}使用npm安装依赖...${NC}"
+        echo -e "${YELLOW}⚠️  建议使用pnpm获得更好性能，使用npm安装依赖...${NC}"
         npm install
     fi
     
@@ -82,9 +96,13 @@ build_project() {
     echo -e "${GREEN}✅ TypeScript编译检查通过${NC}"
     
     # 如果有构建脚本，执行构建
-    if [ -f "package.json" ] && npm run | grep -q "build"; then
+    if [ -f "package.json" ] && (pnpm run --help 2>/dev/null | grep -q "build" || npm run | grep -q "build"); then
         echo -e "${BLUE}🏗️  执行项目构建...${NC}"
-        npm run build
+        if command -v pnpm &> /dev/null; then
+            pnpm run build
+        else
+            npm run build
+        fi
         echo -e "${GREEN}✅ 项目构建完成${NC}"
     fi
 }
@@ -189,7 +207,11 @@ start_all_services() {
     cat > .start-api.sh << 'EOF'
 #!/bin/bash
 while true; do
-    npm run dev:api >> logs/api-server.log 2>&1
+    if command -v pnpm &> /dev/null; then
+        pnpm run dev:api >> logs/api-server.log 2>&1
+    else
+        npm run dev:api >> logs/api-server.log 2>&1
+    fi
     echo "$(date): API服务器意外退出，3秒后重启..." >> logs/api-server.log
     sleep 3
 done
@@ -217,7 +239,11 @@ EOF
 #!/bin/bash
 cd web
 while true; do
-    npm run dev >> ../logs/web-server.log 2>&1
+    if command -v pnpm &> /dev/null; then
+        pnpm run dev >> ../logs/web-server.log 2>&1
+    else
+        npm run dev >> ../logs/web-server.log 2>&1
+    fi
     echo "$(date): Web服务器意外退出，3秒后重启..." >> ../logs/web-server.log
     sleep 3
 done
@@ -266,10 +292,10 @@ show_test_commands() {
     echo -e "${BLUE}🧪 可用的测试命令:${NC}"
     echo ""
     echo -e "${GREEN}# 编译检查${NC}"
-    echo "npm run build"
+    echo "pnpm run build"
     echo ""
     echo -e "${GREEN}# 运行单元测试${NC}"
-    echo "npm test"
+    echo "pnpm run test"
     echo ""
     echo -e "${GREEN}# API功能测试${NC}"
     echo "curl http://localhost:7000/api/health"
@@ -293,6 +319,7 @@ main() {
     
     # 基础环境检查
     check_node_version
+    check_pnpm
     check_typescript
     
     # 项目准备

@@ -6,13 +6,22 @@
     "scripts": {
         "build": "tsc",
         "start": "node dist/app.js",
-        "dev": "npx ts-node src/app.ts",
-        "dev:server": "npx ts-node src/app.ts",
-        "dev:api": "npx ts-node src/app.ts",
-        "dev:web": "cd web && npm run dev",
+        "dev": "pnpm exec ts-node src/app.ts",
+        "dev:server": "pnpm exec ts-node src/app.ts",
+        "dev:api": "pnpm exec ts-node src/app.ts",
+        "dev:web": "pnpm --filter web dev",
         "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
         "lint": "eslint src/**/*.ts",
-        "format": "prettier --write src/**/*.ts"
+        "lint:fix": "eslint src/**/*.ts --fix",
+        "format": "prettier --write src/**/*.ts",
+        "format:check": "prettier --check src/**/*.ts",
+        "clean": "rimraf dist",
+        "prebuild": "pnpm run clean",
+        "prestart": "pnpm run build",
+        "install:all": "pnpm install && pnpm --filter web install",
+        "build:all": "pnpm run build && pnpm --filter web build"
     },
     "keywords": [
         "solana",
@@ -64,33 +73,34 @@
         "@types/cors": "^2.8.17",
         "@types/express": "^4.17.21",
         "@types/jest": "^29.5.8",
-        "@types/joi": "^17.2.3",
         "@types/jsonwebtoken": "^9.0.5",
         "@types/lodash": "^4.14.202",
         "@types/node": "^20.10.5",
         "@types/uuid": "^9.0.7",
         "@types/ws": "^8.5.10",
-        "@typescript-eslint/eslint-plugin": "^6.14.0",
-        "@typescript-eslint/parser": "^6.14.0",
-        "eslint": "^8.56.0",
+        "@typescript-eslint/eslint-plugin": "^8.41.0",
+        "@typescript-eslint/parser": "^8.41.0",
+        "eslint": "^9.17.0",
         "jest": "^29.7.0",
         "nodemon": "^3.0.2",
-        "prettier": "^3.1.1",
-        "puppeteer": "^21.11.0",
+        "prettier": "^3.4.2",
+        "puppeteer": "^22.15.0",
+        "rimraf": "^6.0.1",
         "ts-jest": "^29.1.1",
         "ts-node": "^10.9.1",
         "typescript": "^5.3.3"
     },
     "engines": {
         "node": ">=18.0.0",
-        "npm": ">=8.0.0"
+        "pnpm": ">=8.0.0"
     },
+    "packageManager": "pnpm@8.15.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/your-org/dlmm-liquidity-manager.git"
+        "url": "https://github.com/jackjin1997/meteora2.git"
     },
     "bugs": {
-        "url": "https://github.com/your-org/dlmm-liquidity-manager/issues"
+        "url": "https://github.com/jackjin1997/meteora2/issues"
     },
-    "homepage": "https://github.com/your-org/dlmm-liquidity-manager#readme"
+    "homepage": "https://github.com/jackjin1997/meteora2#readme"
 }
