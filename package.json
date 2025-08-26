@@ -23,7 +23,7 @@
         "meteora",
         "jupiter"
     ],
-    "author": "DLMM Team",
+    "author": "jinzexu (Fork from cryptocj520)",
     "license": "MIT",
     "dependencies": {
         "@coral-xyz/anchor": "^0.31.1",
